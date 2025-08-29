@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: time-service
+  name: ip-service
   labels:
     app: time-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: time-service
+      app: ip-service
   template:
     metadata:
       labels:
-        app: time-service
+        app: ip-service
     spec:
       containers:
-      - name: time-service
-        image: swr.ap-southeast-3.myhuaweicloud.com/george/time-service:v1.0
+      - name: ip-service
+        image: swr.ap-southeast-3.myhuaweicloud.com/george/ip-service:v1.0
         ports:
-        - containerPort: 3000
+        - containerPort: 3001
         resources:
           requests:
             cpu: "100m"
@@ -30,10 +30,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: time-service
+  name: ip-service
 spec:
   selector:
-    app: time-service
+    app: ip-service
   ports:
   - port: 80
-    targetPort: 3000
+    targetPort: 3001

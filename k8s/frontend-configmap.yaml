@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+data:
+  TIME_URL: "http://159.138.100.145:3000/time"
+  DATE_URL: "http://159.138.100.145:3002/date"
+  IP_URL: "http://159.138.100.145:3001/ip"

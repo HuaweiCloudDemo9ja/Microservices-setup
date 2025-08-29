@@ -1,24 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: time-service
+  name: frontend
   labels:
-    app: time-service
+    app: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: time-service
+      app: frontend
   template:
     metadata:
       labels:
-        app: time-service
+        app: frontend
     spec:
       containers:
-      - name: time-service
-        image: swr.ap-southeast-3.myhuaweicloud.com/george/time-service:v1.0
+      - name: frontend
+        image: swr.ap-southeast-3.myhuaweicloud.com/george/frontend:v1.0
         ports:
-        - containerPort: 3000
+        - containerPort: 3003
+        envFrom:
+        - configMapRef:
+            name: frontend-config
         resources:
           requests:
             cpu: "100m"
@@ -30,10 +33,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: time-service
+  name: frontend
 spec:
+  type: LoadBalancer
   selector:
-    app: time-service
+    app: frontend
   ports:
   - port: 80
-    targetPort: 3000
+    targetPort: 3003
