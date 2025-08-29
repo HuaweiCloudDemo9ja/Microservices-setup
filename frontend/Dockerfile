@@ -1,5 +1,11 @@
-FROM node:18-alpine
+FROM node:18
+
 WORKDIR /app
-COPY server.js .
-RUN npm init -y && npm install express
-CMD ["node", "server.js"]
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+CMD ["node", "index.js"]
+
