@@ -37,7 +37,7 @@ kind: Service
 metadata: 
   name: frontend
   annotations:
-    kubernetes.io/elb.id: 667b9227-338a-4c3b-891c-efc08f8f6f2a                        # ELB ID. Replace it with the actual value.
+    kubernetes.io/elb.id: <elb-id>                        # ELB ID. Replace it with the actual value.
     kubernetes.io/elb.class: performance                                              # Load balancer type
     kubernetes.io/elb.lb-algorithm: ROUND_ROBIN                   # Load balancer algorithm
     # kubernetes.io/elb.session-affinity-mode: SOURCE_IP          # The sticky session type is source IP address.
