@@ -25,7 +25,10 @@ spec:
             memory: "128Mi"
           limits:
             cpu: "200m"
-            memory: "256Mi"
+      imagePullSecrets:
+      - name: default-secret
+
+
 ---
 apiVersion: v1
 kind: Service
