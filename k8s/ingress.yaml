@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-ingress
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: api.geoajayi.xyz
+      http:
+        paths:
+          - path: /time
+            pathType: Prefix
+            backend:
+              service:
+                name: time-service
+                port:
+                  number: 80
+          - path: /date
+            pathType: Prefix
+            backend:
+              service:
+                name: date-service
+                port:
+                  number: 80
